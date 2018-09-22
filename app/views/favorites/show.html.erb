@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+   <div class="col-lg-12">
+
+   <h1>ストック一覧</h1>
+     <br>
+     <% if @favorite_contacts.present? %>
+       <% @favorite_contacts.each do |t| %>
+       <div class="contact-panel">
+         <p>投稿者：<%= t.user.name %></p>
+         <p>件名：<%= t.title %></p>
+         <p>内容：<%= t.content %></p>
+         <p><%= image_tag t.image %><p>
+       </div>
+       <% end %>
+     <% end %>
+     <br>
+      <%= link_to "一覧画面にもどる", contacts_path, class: 'btn btn-default btn-sm btn btn-default' %>
+    </div>
+  </div>
+</div>
+

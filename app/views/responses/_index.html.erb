@@ -1,0 +1,13 @@
+<ul class="response">
+  <% responses.each do |response| %>
+    <% if response.id.present? %>
+      <li>
+        <% user = User.find_by(id: response.user_id) %>
+        <p>投稿者：<%= user.name %></p>
+        <p>件名：<%= response.content %></p>
+        <p><%= response.created_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M") %></p>
+        <br>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

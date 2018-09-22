@@ -1,0 +1,2 @@
+$("#responses_area").html("<%= j(render 'responses/index', { responses: @response.contact.responses, contact: @response.contact, }) %>")
+$("textarea").val('')

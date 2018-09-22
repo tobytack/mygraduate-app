@@ -1,0 +1,30 @@
+   <%= form_with(model: @contact, local: true, url: choose_new_or_edit) do |form| %>
+     <% if @contact.errors.any? %>
+       <div id="error_expanation">
+       <p class="alert alert-danger"><%= @contact.errors.count %>件のエラーがあります。</p>
+       <ul class="alert_reason">
+         <% @contact.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+       </div>
+     <% end %>
+
+     <div class="contact_title">
+       <%= form.label :title %>
+       <%= form.text_field :title, class: 'form-control'%>
+     </div>
+     <div class="contact_title">
+       <%= form.label :content %>
+       <%= form.text_field :content, class: 'form-control' %>
+       <p class="help-block">1~140文字以内で入力してください。</p>
+     </div>
+     <br>
+     <div class="contact_title">
+     <%= image_tag(@contact.image.url) if @contact.image.url %>
+     <%= form.file_field :image, id: :feed_image %>
+     </div>
+     <br>
+    <%= form.submit "投稿, class: 'btn btn-default btn-sm btn-success' %>
+
+   <% end %>
