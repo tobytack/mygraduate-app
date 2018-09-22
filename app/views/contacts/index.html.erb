@@ -15,7 +15,7 @@
               <p><%= image_tag contact.image %></p>
               <%= link_to '詳細', contact_path(contact.id), class: 'btn btn-default btn-sm btn-default' %>
               <% if contact.user_id == current_user.id %>
-              <%= link_to '編集', edit_contact_path(contact.id), data:{confirm: '編集ますか？'}, class: 'btn btn-default btn-sm btn-info' %> |
+              <%= link_to '編集', edit_contact_path(contact.id), data:{confirm: '編集ますか？'}, class: 'btn btn-default btn-sm btn-info' %> 
               <%= link_to '削除', contact_path(contact.id), method: :delete, data:{confirm: '本当に削除しますか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
               <% end %>
               <br>

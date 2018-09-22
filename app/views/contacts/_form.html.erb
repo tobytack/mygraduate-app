@@ -11,13 +11,17 @@
      <% end %>
 
      <div class="contact_title">
+       <div class="form-group, col-md-6">
        <%= form.label :title %>
        <%= form.text_field :title, class: 'form-control'%>
      </div>
+     </div>
      <div class="contact_title">
+       <div class="form-group, col-md-6">
        <%= form.label :content %>
        <%= form.text_field :content, class: 'form-control' %>
        <p class="help-block">1~140文字以内で入力してください。</p>
+     </div>
      </div>
      <br>
      <div class="contact_title">
@@ -25,6 +29,6 @@
      <%= form.file_field :image, id: :feed_image %>
      </div>
      <br>
-    <%= form.submit "投稿, class: 'btn btn-default btn-sm btn-success' %>
+    <%= form.submit "投稿", class: 'btn btn-default btn-sm btn-success' %>
 
    <% end %>
