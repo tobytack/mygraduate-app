@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
     @responses = @contact.responses.includes(:user).all
     @response = @contact.responses.build(user_id: current_user.id) if current_user
   end
-
+  
   def edit
     @contact = Contact.find(params[:id])
   end
