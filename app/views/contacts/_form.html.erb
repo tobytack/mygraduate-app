@@ -32,10 +32,9 @@
       <%= image_tag(@contact.image.url) if @contact.image.url %>
       <%= form.file_field :image, id: :feed_image %>
       </div>
-     </div>
+     
      
      <br>
-     
     <div class="contact_title">
     <div class="form-group, col-md-6">
     <%= form.submit "投稿", class: 'btn btn-default btn-sm btn-success' %>

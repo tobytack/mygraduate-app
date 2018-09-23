@@ -8,30 +8,23 @@
      <p>内容：<%= @contact.content %></p>
      <p><%= image_tag @contact.image %></p>
      
-     <% unless @favorite == current_user.id %>
-             <% if @favorite.present? %>
-               <p>same</p>
-             <% else %>
-               <p>not same</p>
-             <% end %>
-     <% end %>
-         
+     <p><% @contact.user_id %></p>
+     
+     <% unless @contact.user_id == current_user.id %>
+       <% if @favorite.nil? %>
          <% unless @contact.user_id == current_user.id %>
              <% if @favorite.present? %>
                 <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id),
                 method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %>
-             <% elsif %>
-              <% unless @favorite == current_user.id %>
-             <% if @favorite.nil? %>
+             <% else %>
                 <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
                 method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
-             <% else %>
-               <p>not same</p>
-             <% end %>           
              <% end %>
-             <% end %><% end %>
-
-     
+         <% end %>
+       <% else %>
+         <h1>sutokku</h1>
+       <% end %>
+     <% end %>
    </div>
    <div class="col-md-6">
      <h3>コメント一覧</h3>
