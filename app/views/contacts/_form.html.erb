@@ -12,24 +12,35 @@
 
      <div class="contact_title">
        <div class="form-group, col-md-6">
-       <%= form.label :title %>
-       <%= form.text_field :title, class: 'form-control'%>
-     </div>
+        <%= form.label :title %>
+        <%= form.text_field :title, class: 'form-control'%>
+      </div>
      <br>
      </div>
+     
      <div class="contact_title">
        <div class="form-group, col-md-6">
-       <%= form.label :content %>
-       <%= form.text_area :content, class: 'form-control', rows: "3" %>
-       <p class="help-block">1~500文字以内で入力してください。</p>
+        <%= form.label :content %>
+        <%= form.text_area :content, class: 'form-control', rows: "3" %>
+        <p class="help-block">1~500文字以内で入力してください。</p>
+       </div>
      </div>
-     </div>
+     
      <br>
      <div class="contact_title">
-     <%= image_tag(@contact.image.url) if @contact.image.url %>
-     <%= form.file_field :image, id: :feed_image %>
+      <div class="form-group, col-md-6">
+      <%= image_tag(@contact.image.url) if @contact.image.url %>
+      <%= form.file_field :image, id: :feed_image %>
+      </div>
      </div>
+     
      <br>
+     
+    <div class="contact_title">
+    <div class="form-group, col-md-6">
     <%= form.submit "投稿", class: 'btn btn-default btn-sm btn-success' %>
-
+    </div>
+    </div>
    <% end %>
+   
+  
