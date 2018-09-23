@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #追加
+    @favorites = Favorite.where("user_id = ?", @user)
   end
 
   private

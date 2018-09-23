@@ -1,7 +1,10 @@
 class FavoritesController < ApplicationController
   def create
-    favorite = current_user.favorites.create(contact_id: params[:contact_id])
-    redirect_to contacts_url, notice: "#{favorite.contact.user.name}さんの投稿をお気に入りしました"
+    @user_id = current_user.id
+    @favorite_id = Contact.find(params[:id]).id
+    @favorite = Favorite.new(contact_id: @contact_id, user_id: @user_id)
+
+
   end
 
   def destroy
@@ -14,7 +17,6 @@ class FavoritesController < ApplicationController
     @favorite_contacts = @user.favorite_contacts
   end
   
-
   #追加
   def index
     @user = current_user
