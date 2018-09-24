@@ -15,8 +15,19 @@ class FavoritesController < ApplicationController
   end
   
 
+  #追加
+  def index
+    @user = current_user
+    @favorites = Favorite.where(user_id: @user.id).all
+  end
+
   def show_favorites
     @contacts = Contact.find(params[:id])
     @favorites = Favorite.where(contact_id: @contact.id).all
+  end
+  private
+
+  def contact_params
+    params.require(:contact).permit(:title,:content, :image, :image_cache)
   end
 end
