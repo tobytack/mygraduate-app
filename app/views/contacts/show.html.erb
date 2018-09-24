@@ -8,28 +8,22 @@
      <p>内容：<%= @contact.content %></p>
      <p><%= image_tag @contact.image %></p>
      
-     <% if @favorite.user_id == current_user.id %>
-        <p>same</p>
-     <% else %>
-        <p>not same</p>
-     <% end %>
-
-
+     
      <% unless @contact.user_id == current_user.id %> 
            <% if @favorite.nil? %>
                     <% if @favorite == current_user.id %>
                           <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id),
                           method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %>
                     <% else %>
-                          誰かがお気に入り中
+                          既に他のユーザがお気に入り中です
                     <% end %>
           <% else %>
-                <% if @favorite != current_user.id %>
+                <% if @favorite == current_user.id %>
                           <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id),
                           method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %>
                 <% else %>
                 <% end %>
-                   imakoko
+                   あなたがお気に入り中です
                 <% end %>
       <% end %>
   
