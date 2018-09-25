@@ -28,15 +28,10 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-    
-    @favorite = Favorite.where(params[:id])
-    
+
     @favorite = current_user.favorites.find_by(contact_id: @contact.id)
-    
-    @user = User.find_by(id: @contact.user_id)
-    
-    @favorites = Favorite.where(params[:id])
-    
+    @favorites = Favorite.where(contact_id: @contact.id).all
+
     @responses = @contact.responses.includes(:user).all
     @response = @contact.responses.build(user_id: current_user.id) if current_user
   end

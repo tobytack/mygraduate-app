@@ -8,26 +8,23 @@
      <p>内容：<%= @contact.content %></p>
      <p><%= image_tag @contact.image %></p>
      
-     <% binding.pry %>
-     <% unless @contact.user_id == current_user.id %> 
-           
-           <% if @favorite.id.present? %>
-           
-                    <% if @favorite.id == current_user.id %>
-                          <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id),
-                          method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %>
-                    <% else %>
-                    
-                    　　    既に他のユーザがお気に入り中です
-                   <% end %>
-           <% else %>
-                   
-                   <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
-                   method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
-            <% end %>
-      <% end %>
-  
-     
+         <% unless @contact.user_id == current_user.id %>
+             <% if @favorite.present? %>
+                <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id),
+                method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %>
+             <% elsif @favorite_contacts.present? %>
+                <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
+                method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
+             <% end %>
+         <% end %>
+　　　　<% binding.pry %>
+
+                <p>if分岐外用
+                <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
+                method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
+         　　　<%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
+                method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
+                </p>
    </div>
    <div class="col-md-6">
      <h3>コメント一覧</h3>
