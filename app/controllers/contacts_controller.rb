@@ -4,7 +4,6 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all
-     
   end
 
   def new
@@ -28,10 +27,8 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-
     @favorite = current_user.favorites.find_by(contact_id: @contact.id)
     @favorites = Favorite.where(contact_id: @contact.id).all
-
     @responses = @contact.responses.includes(:user).all
     @response = @contact.responses.build(user_id: current_user.id) if current_user
   end
@@ -64,7 +61,7 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:user_id,:contact_id)
+    params.require(:contact).permit(:title,:content, :image, :image_cache)
   end
 
   def set_contact
