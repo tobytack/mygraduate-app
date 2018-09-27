@@ -3,7 +3,7 @@ class Contact < ApplicationRecord
   validates :content, presence: true, length: {in: 1..500}
 
   belongs_to :user
-  has_one :favorite, through: :favorites, source: :user
+  has_one :favorite
   #has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
