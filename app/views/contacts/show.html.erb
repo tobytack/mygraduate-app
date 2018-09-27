@@ -11,15 +11,15 @@
          <% unless @contact.user_id == current_user.id %>
              <% if @favorite.present? %>
 　                <% if @favorites.user_id == current_user.id %>
-                       <%= link_to 'お気に入り解除する', contacts_path,
+                       <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id),
                        method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %>
                   <% else %>
-                       <%= link_to 'お気に入りにする', contacts_path,
+                       <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
                        method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
                   <% end %>
              <% else %>
                 <% if @favorites.nil? %>
-                    <%= link_to 'お気に入りにする', contacts_path,
+                    <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
                     method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
                 <% end %>
              <% end %>
