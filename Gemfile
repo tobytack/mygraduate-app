@@ -69,3 +69,5 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'font-awesome-rails'
+
+gem 'rails_12factor', group: :production
