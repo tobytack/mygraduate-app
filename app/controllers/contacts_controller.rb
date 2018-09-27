@@ -27,14 +27,18 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+
     @favorite = current_user.favorites.find_by(contact_id: @contact.id)
+    @favorites = Favorite.find_by(contact_id: @contact.id)
+    
+
     @responses = @contact.responses.includes(:user).all
     @response = @contact.responses.build(user_id: current_user.id) if current_user
   end
   
-  def edit
+   def edit
     @contact = Contact.find(params[:id])
-  end
+   end
 
   def update
     @contact = Contact.find(params[:id])
