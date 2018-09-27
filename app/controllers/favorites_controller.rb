@@ -15,6 +15,3 @@ class FavoritesController < ApplicationController
   end
 end
 
-  def contact_params
-    params.require(:contact).permit(:title,:content, :image, :image_cache)
-  end
