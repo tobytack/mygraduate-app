@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  skip_before_action :verify_authenticity_token ,:only => [:create]
+  
   def create
     favorite = current_user.favorites.create(contact_id: params[:contact_id])
     redirect_to contacts_url, notice: "#{favorite.contact.user.name}さんの投稿をお気に入りしました"
