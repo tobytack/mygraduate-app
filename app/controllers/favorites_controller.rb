@@ -1,11 +1,11 @@
 class FavoritesController < ApplicationController
   def create
-    @favorite = current_user.favorites.create(contact_id: params[:contact_id])
+    favorite = current_user.favorites.create(contact_id: params[:contact_id])
     redirect_to contacts_url, notice: "#{favorite.contact.user.name}さんの投稿をお気に入りしました"
   end
 
   def destroy
-    @favorite = current_user.favorites.find_by(id: params[:id]).destroy
+    favorite = current_user.favorites.find_by(id: params[:id]).destroy
     redirect_to contacts_url, notice: "#{favorite.contact.user.name}さんの投稿をお気に入り解除しました"
   end
 
