@@ -19,8 +19,8 @@
                   <% end %>
              <% else %>
                 <% if @favorites.nil? %>
-                   
-                    <%= method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
+                    <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
+                    method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
                 <% end %>
              <% end %>
         <% end %>
