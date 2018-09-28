@@ -81,8 +81,8 @@ class ContactsController < ApplicationController
   
   def current_check
       @contact = Contact.find(params[:id])
-    unless @contact.user_id == current_user  
-      render 'new'
+    unless @contact.user_id == current_user.id  
+      redirect_to contacts_path
     end
   end
 end
