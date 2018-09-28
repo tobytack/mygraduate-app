@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only:[:show, :edit, :update, :destroy]
-  before_action :login_check, only: [:index, :new, :edit, :show, :destroy]
+  before_action :login_check, only:[:index, :new, :edit, :show, :destroy]
+  before_action :current_check, only: :edit
 
   def index
     @contacts = Contact.all
@@ -36,9 +37,11 @@ class ContactsController < ApplicationController
     @response = @contact.responses.build(user_id: current_user.id) if current_user
   end
   
-   def edit
+  def edit
     @contact = Contact.find(params[:id])
-   end
+  end
+
+
 
   def update
     @contact = Contact.find(params[:id])
@@ -59,8 +62,7 @@ class ContactsController < ApplicationController
     @contact.user_id = current_user.id
     render :new if @contact.invalid?
   end
-
-
+  
   private
 
   def contact_params
@@ -74,6 +76,13 @@ class ContactsController < ApplicationController
   def login_check
     unless current_user
       render new_session_path
+    end
+  end
+  
+  def current_check
+      @contact = Contact.find(params[:id])
+    unless @contact.user_id == current_user  
+      render 'new'
     end
   end
 end

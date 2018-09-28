@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  
+
   def create
     favorite = current_user.favorites.create(contact_id: params[:contact_id])
     redirect_to contacts_url, notice: "#{favorite.contact.user.name}さんの投稿をお気に入りしました"
@@ -17,18 +17,25 @@ class FavoritesController < ApplicationController
   
 
   #追加
-  def index
-    @user = current_user
-    @favorites = Favorite.where(user_id: @user.id).all
-  end
+  #def index
+    #@user = current_user
+    #@favorites = Favorite.where(user_id: @user.id).all
+  #end
 
   def show_favorites
-    @contacts = Contact.find(params[:id])
-    @favorites = Favorite.where(contact_id: @contact.id).all
+    @contact = Contact.find(params[:id])
+    @favorites = Favorite.find_by(contact_id: @contact.id)
   end
+  
   private
 
   def contact_params
     params.require(:contact).permit(:title,:content, :image, :image_cache)
   end
 end
+
+  def login_check
+    unless current_user
+      render new_session_path
+    end
+  end

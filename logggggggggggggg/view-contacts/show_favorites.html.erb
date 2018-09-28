@@ -1,4 +1,6 @@
-<h2>ユーザー一覧(<%= @favorites.length %>人)</h2>
+<h2>ユーザー一覧(<%= @favorites %>人)</h2>
+
+<% binding.pry %>
 
     <% @favorites.each do |favorite| %>
       <% @user_id = favorite.id %>

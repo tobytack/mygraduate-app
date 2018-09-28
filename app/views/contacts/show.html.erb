@@ -21,11 +21,12 @@
                 <% if @favorites.nil? %>
                     <%= link_to 'お気に入りにする', favorites_path(contact_id: @contact.id),
                     method: :post, class: 'btn btn-default btn-sm btn btn-primary' %>
+            　　<% else %>
+            　　<p>この投稿の担当者は <%= @favorites.user.name %> さんです</p>
                 <% end %>
-             <% end %>
+                <% end %>
         <% end %>
         
-   
 　　　　
    </div>
    <div class="col-md-6">

@@ -8,13 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contacts do
-    member do
-      get "show_favorites" => "favorites#show_favorites"    
-    end
-  end
   resources :sessions, only:[:new, :create, :destroy]
   resources :users
-  resources :favorites, only:[:create, :destroy, :show, :index, :show_favorites]
+  resources :favorites, only:[:create, :destroy, :show, :index]
 
 end
